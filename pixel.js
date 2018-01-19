@@ -1,7 +1,7 @@
 window.addEventListener("load", function(){
 
-var submitBtn = document.getElementById("submit");
-var table = document.getElementById("pixel_canvas");
+const submitBtn = document.getElementById("submit");
+const table = document.getElementById("pixel_canvas");
 
 submitBtn.addEventListener("click", function(e){
   e.preventDefault();
@@ -9,15 +9,15 @@ submitBtn.addEventListener("click", function(e){
 });
 
 function makeGrid(){
-  var heightInp = document.getElementById("input_height");
-  var widthInp = document.getElementById("input_width");
-  var heightLength = heightInp.value;
-  var widthLength = widthInp.value;
+  const heightInp = document.getElementById("input_height");
+  const widthInp = document.getElementById("input_width");
+  const heightLength = heightInp.value;
+  const widthLength = widthInp.value;
 
-  for (var i = 0; i< heightLength; i++){
-    var row = document.createElement("tr");
-    for (var j = 0; j < widthLength; j++){
-      var col = document.createElement("td");
+  for (let i = 0; i< heightLength; i++){
+    const row = document.createElement("tr");
+    for (let j = 0; j < widthLength; j++){
+      const col = document.createElement("td");
       row.appendChild(col);
     }
     table.appendChild(row);
@@ -25,14 +25,25 @@ function makeGrid(){
 }
 
 table.addEventListener("click", function(e){
-  var colorPicker = document.getElementById("colorPicker");
-  var colorPickerVal = colorPicker.value;
-  var celClicked = e.target;
+  const clearBtn = document.getElementById("clear");
+  clearBtn.classList.remove("clear");
+  const colorPicker = document.getElementById("colorPicker");
+  const colorPickerVal = colorPicker.value;
+  let celClicked = e.target;
   if (celClicked.style.backgroundColor != ""){
     celClicked.style.backgroundColor = "";
   }else{
     celClicked.style.backgroundColor = colorPickerVal;
   }
+
+  clearBtn.addEventListener("click", clearTable);
 });
+
+function clearTable(){
+  const cells = document.getElementsByTagName("td");
+  for(let i = 0; i<cells.length; i++){
+    cells[i].style.backgroundColor="";
+  }
+}
 
 })

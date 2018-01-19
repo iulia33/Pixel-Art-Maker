@@ -38,3 +38,12 @@ td {
 input[type=number] {
     width: 6em;
 }
+
+.clear{
+  display: none;
+}
+
+#clear{
+  margin-bottom: 10px;
+  background-color: #ff0000;
+}
